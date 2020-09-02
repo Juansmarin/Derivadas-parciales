@@ -1,0 +1,991 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from sympy import * \n",
+    "from sympy.plotting import *\n",
+    "init_printing(use_latex=True)  "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Revisión de ejercicios de la tarea\n",
+    "\n",
+    "## Evaluaciones\n",
+    "\n",
+    "2. $f(x,y)=3x^2-5xy+y^3$ \n",
+    "\n",
+    "halle el valor de: $f(1,2)$, $f(-1,-5)$ y $f(3,-2)$.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "3. Si $$g(x,y)=e^{2x^2y-5x+2y}$$ \n",
+    "\n",
+    "evaluar $g$ en los siguientes puntos: $(0,0)$ y $(-1,1)$.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n",
+    "4. Considere $$h(x,y)=ln(x^2+4x+y^2-1)$$ \n",
+    "\n",
+    "calcule: \n",
+    "\n",
+    "$h(1,2)$, $h(0,-0.5)$ y $h\\left(\\frac{1}{2},\\frac{1}{2}\\right)$."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Ejercicios Aplicados\n",
+    "\n",
+    "1. Una empresa produce dos productos, $X$ y $Y$. Las unidades de costos de mano de obra y de materiales\n",
+    "   son de 5 dólares en el caso del producto $X$ y de 12 dólares por lo que\n",
+    "   respecta a $Y$. Además, la empresa también tiene costos fijos\n",
+    "   de  3000 dólares al mes. Exprese el costo mensual $C$ (en dólares)\n",
+    "   como una función de las unidades de $X$ y $Y$ producidas.\n",
+    "   ¿Cuál es el costo total de producir 200 unidades de $X$ y 150\n",
+    "   unidades de $Y$?\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "2. Se lanza un nuevo producto al mercado. El volumen de ventas $x$ se incrementa como una función del tiempo $t$ y depende        también de la cantidad $A$ gastada en la campaña publicitaria. Si, con $t$ medido en meses y A en dólares,\n",
+    "   \n",
+    "   $$x=200(5-e^{-0.002A})(1-e^{-t})$$\n",
+    "   \n",
+    "   Determine el volumen de ventas si ha transcurrido 1 mes y la inversión fue de 400 dólares.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "3. La función de producción de cierta empresa está dada por\n",
+    "   \n",
+    "   $$P=5L + 2L^2+ 3LK + 8K + 3K^2$$\n",
+    "   \n",
+    "   en donde $L$ es el insumo mano de obra medido en miles de horas-hombre por semana, $K$ es el monto de capital invertido        medido en miles de dólares por semana y $P$ es la producción semanal en miles de artículos. Determine la productividad          cuando $L=5$ y $K=12$.\n",
+    "   \n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "4. Suponga que el costo de producción de una empresa que fabrica    dos artículos $A$ y $B$ viene dada por\n",
+    "\n",
+    "   $$C(x, y) = 1500 -7.5x- 15y-0.3xy+0.3x^2 + 0.2y^2$$\n",
+    "\n",
+    "   Si la empresa puede vender cada unidad de $A$ a 20 dólares y      cada unidad de $B$ a\n",
+    "   16 dólares, encuentre la función de utilidad por la producción    y venta de los articulos $A$ y $B$.\n",
+    "   \n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "5. Juguetes Mónica produce dos tipos diferentes de\n",
+    "   cochecitos de plástico con un costo de 300 pesos y 900 pesos      cada uno. Las demandas anuales $x_1$ y $x_2$ (en miles) están    dadas por\n",
+    "\n",
+    "    $$x_1 = 30 + 2p_2 - 5p_1 \\ \\ \\ \\  y \\ \\ \\ \\ x_2 = 100 + p_1 -     2p_2 $$\n",
+    "\n",
+    "   con $p_1$ y $p_2$ los precios unitarios (en pesos) de los dos    tipos de cochecitos. Determine la utilidad en función de los      precios $p_1$ y $p_2$. \n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "6. Los costos de producción de una empresa que fabrica los artículos $A,\\ B,\\ C$ y $D$ vienen dados por \n",
+    "$$C(x,y,z,w)=0.1x+2.2y+1.7z+4w+2xy+0.5zw+2000$$\n",
+    "    siendo $x,\\ y,\\ z$ y $w$ la cantidad de artículos producidos de los productos $A,\\ B,\\ C$ y $D$ respectivamente. Halle el costo de fabricar 200 unidades de $A$, 450 de $B$, 635 de $C$, y 1230 de $D$.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "7. Halle la función de utilidades de la empresa del punto anterior si se sabe que los productos $A,\\ B,\\ C$ y $D$ se pueden vender cada uno a $2\\ ,3\\ ,2$ y $6$ dólares cada uno."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Derivadas parciales y su significado\n",
+    "\n",
+    "Cuando calculamos la derivada parcial de una función encontramos las funciones marginales de la función dada.\n",
+    "\n",
+    "Cuando cálculamos $f_x$ estamos encontrando la razón de cambio en la función $f$ si cambiamos el valor de $x$ a la siguiente unidad, mientras que todas las demás variables se mantienen iguales.\n",
+    "\n",
+    "La interpretación es análoga para todas las derivadas parciales."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "x,y=symbols(\"x,y\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAH4AAAAXCAYAAADN2PsaAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEd0lEQVRoBe2Z7VEbMRCGjccFkJQAHRDoADqApAKgg2T4xz8GOgA6CHQAHfDRQdJBHHfgvI+iVWTZ5nSyfXdkrBlZuj1p9e6HdqXzxng87tUt5+fnm5pz5udt+fZY9FFdXuvx7WhgULjspYx8anPVv1b/RXXbaOu22xroF8I7kbH3o7mX6m+JthPR1t0Oa6DU8Oz25w7LtYZWoYGNkhyf8tROZ8cfql2H+lQ5HX0uzfFBHB/eD0X4FIgNd4SBA+Y3v+yu2iHPor962n/ReDntbMUBG7k5bz3WFXChHe+BcLA7Ur+VE73HgPBHJrz6RKCvqgfq11aK8elSKzkwdHqoPhHN9H9fB29pju8JiHkbyh2p7nhanfXdWM3bV0WIkoKRj+OJ4sXuxxHvYnrb/QXlRD8cqomuVr77jl2tjV7ZFhlei2N0PO1CfQzOaZ4QRIgtKXgztaRwu/gtDOl8dvqmx1rCdxVzFpGTtDXy1WGTbDwXldIcz50dIWhDERDLP4HWQAcD43zzlADOd18kH3J+iAURzXY/m7BWCYYXExRk4XZPfcInO/uLKuVJY1weUTsB4O/rdn6FJeT2BIH7pqD34YCnfh0ZbSw3lR+ae2X8PZ9btfPWtqEra7U2kY40d6r+jS3ksWHHN3HHoZ6DwxVVk55Ub1XJveRLlMAi76IIM0bHae2kb7jryHjmdfGgyWkO/Sya7Tbj3UiLbKocXImuOHX6PSULt9vxYoSHpIZFMFPcxxnvReps4VB34w3nQNaRUWNxGpyfcqD60/X+/UBr5bYgbBjbRTH1sdGLWm5V96rZuC3UP2tSLByCvRpN7VJCmviQiwhRacGxeno/64wAjuz1/RqPM3jVkXGo+XY9YndfJICRIaWFIR7DSuVkMTCqjtS9U0v6zcbtDK9JIQ/CUAXQttsdYRk/WmeWYXui47l86w95tGQ9zXdnFLVT64iWLaPGosyeWvRAmotzKGkE2twdr3lT62s8/Irl1FzWhUcqB6EenPt6Z2ewStx9mMVFk5lEMY9nMa5FCNvZInwodVttULr6OBPhb6KIlisjkYaI4xzBM2Eu3y1SA0ysscwHrYXuuUER1nPsUIm7DyPVB1VThlOcnuPQz4EhFn6Zci3MS9jYDXtq0yiFMxD+SmXEaWI9gLXx/O51j/4ttIPDyq7vxBGoEvdAkzA4lW/beNNQNRhZNN7ZQUfdbhXhQ0gOc+T1+D7LuYETMDcVHKBERowOH1fEx3QVooq9a6BNnbrn5cJmXOmCzfRciXugQXgKOQyhYAYTIgBKJLzEBwaGdK1gdIxv3yBifBaOS2VE2dzXufH8UrV/H+PdFa+3sr4wcEshj8fOjdyz/o+oxL3QnzTLklLCsCMXPtwtC888PsKJA6D8on8i25JzFu7+PCEbphOm4lDV8PLTy0lZ16rhk7T6hFSiysX06GzKyuXMxU2ob70IbOOhM0NoUl8cVvmSSbgNt50MHhNDGpIzC3cnQv2EdjryICO59OPhkNv5SNJFB53QWC7uP7ZrGIhCn0gbAAAAAElFTkSuQmCC\n",
+      "text/latex": [
+       "$\\displaystyle x^{2} + 2 x y + 3 y$"
+      ],
+      "text/plain": [
+       " 2              \n",
+       "x  + 2⋅x⋅y + 3⋅y"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "f=x**2+2*x*y+3*y\n",
+    "f"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAB4AAAAPCAYAAADzun+cAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABg0lEQVQ4EbWU31ECQQyHT8YCGEs4OwDtQEtw7EA6kEd4xQ6wBLEDpAQowRKUDvD7dg44jou3PpiZ3O0mv/zZbDbFbrcr/oMnk8mg6RdZHy6VXxYBTafTAaoR/1EASeJfcCt0fUCbyt61NPTT8xPQAvlVoKuLI9wXoE/YAxj0HR6SzJZ/+4lRPqvsog7cBv1D5OPsxIDN0KxSZpFhLi6yPwsM8BGnr5FBTZ6Lq5kclyfNRUBLPD+q21d/wD3hwfuVruE5tqnZDidGUKLY8rchQsrF4cCAb+BfZNYzeM36jv9JV/t0ckqchcPXPXzoE9Ye6ANOFU0nRmhJckqchcNXRAYviVf2/LDpVxlFBkUuTgdgl/A6dEY8m8vAtwAdBHXyWZmdcjNdwp048GNwN7ADpElpIIHZhHOamfoNL5rztrlvwyGbNXHuK+zSdbrjZlrV3q7cP4UAksRtOJ/NSc+w30/DNM0ujF6nysBSWWrJTvTOfBIH6sKh9wotu2SJLf0Yeer0H5dZOETGCKnLAAAAAElFTkSuQmCC\n",
+      "text/latex": [
+       "$\\displaystyle 445$"
+      ],
+      "text/plain": [
+       "445"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "f.subs([(x,10), (y,15)])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAEQAAAASCAYAAADixHhYAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC0UlEQVRYCc2X7VEbQQyGz4wLYFICdEBCB6aDfFSQ0EEYftn/GOgAKIF0QDogoYPQQRw6cJ5nfbteL0dsyJ3PmpFXp92TXukk3Xkwm82qyWSyV1XVCSy9g6fwCfp7FdtObeIfjMdjk3GO0Q8xcORz5K/wEfL3qN/GtU5Ga/h3CNLgP+fB4sRqeYRvcn1XMv5G8JdX2m8VvwkZwX8AtFsAsjJ20VtBXZO+S//r+mwVvwkx8AcCtyKa6LVAm2x1oWsV/5BEpNlRoD3wmv00WJFNTiztQ2RbzQr6BEt3nPk2Fzfzi7+18GfY90H2i+uLiLDeu9aWFfKE2DAZBhrfPPGMw+tCRnEHX8P2v+dMlv3cOz2D/7TGfQvA0wLkR67fq2tMCHqH6VVtwHMVspVRBqyRWBFvGvZR9UJL+MHuw/UBSkfwQ5AWP+rC23S40M0lbr50k/W42PuBLjekkfuoY32udJMZzmjbIViSyazYL32q1sdK2x6UONuEf4o+Pjir4SwcXvyIKeiWEsJNYT6wPgGGLs2S2o5GypZauGiQmux6DL2Vtsea+rrh9pUq7m/Ejz68MFjFbGtfRWPoHA/qQoWklmFDUPusKRnIgrTclgidhqWY9Qqdr2gN90L4Xge/lWbFhQTVQI3lEV144CEhXJilQ9byievEcjPYWzgmIiSN67yFHFq5o9pf9wt+/4k/Q+DDzTG7leaHF0OMecgh5Nyw/yLZ1wfofKuYGJPh/xurYAqn4NG5F4cW4uYI3yvxZ2hMhnEFqnGLPXXFkAuTodH4fYGYKM4N+8u+8+YKQ8ewFWMCf8L50PLIJmkd/BGPHeD3hm/L37DfJFKYHwoD/+32TQC0Av97qL40jjoxI9a38d6dKPS82n6pBbvAQtCXsNUcCNnWtyvO5pr5ry3TOwEulWyHYGz3fEb6le3HZ3pT6nsrWkYgXROBh7as/Tg7bpoexF9yGjLe9Tb2dQAAAABJRU5ErkJggg==\n",
+      "text/latex": [
+       "$\\displaystyle 2 x + 2 y$"
+      ],
+      "text/plain": [
+       "2⋅x + 2⋅y"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dfx=diff(f,x)\n",
+    "dfx"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAABMAAAAPCAYAAAAGRPQsAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABcklEQVQ4EZWT4W3CMBCFXdQBIrpB2ADaDdIN2m4AIxT1V/KvChvACIUNoBMg2KBsAGKD9HuOj7oWVdSTXu7u5Xx5PseuaRpXluVQPgZcBvKY64pvXWufVVVlhPuQK5aNWvfzpK4O2RE/ADXcQVxPD+wERAyBGq3AiKIz/mLkO5ItfgpmxFOwJs59kaSznWXXFqiZgK+0Dq4Ga/GmzDfueDzz3sYQl25JCtRl/2lWsEjjSM1GUdgBODpPqLLBa7BzOK8Eb3zaKM77pkzFHyyaCcQ6sR2x1Mj6rXOmIqTemdp2myx6BJdCYp3sBszjVR3xnSm7VqeGOY1zvH39Wp2pPvYo1n+i/+cvy3hvqjWO1Iw7SNk9MCIu9F+kkT8EXmjbUpmaKduo2YIFOr3UNHw1MFsS6MOp6crtpV7N9Av8GjT5a1ihH9Ub3ILghH8KlCPWjl7AWNyNrgGk5OueySRbA9f9O4swC4vfyHXJZQ/gHd6P4hvtH9QqE43RDAAAAABJRU5ErkJggg==\n",
+      "text/latex": [
+       "$\\displaystyle 50$"
+      ],
+      "text/plain": [
+       "50"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dfx.subs([(x,10), (y,15)]) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Significa que la función $f$ incrementa aproximadamente 50 unidades si aplicamos un cambio en $x$ de 10 a 11 unidades, mientras que $y$ se mantiene en 15."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAB4AAAAOCAYAAAA45qw5AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACCklEQVQ4EX2V7VECQQyGhaEABisQO0CsQO3AjwqQDnD8xz9HO0AqUOlAOlApAStQ6QCfZ73d2VtPM5NL8m42yWY/rrXdbneaaDqdDsDHyHE5DjbLsB76CGyTYUkFv03Gj/IAtuoUYG4+YaxygAld7Dd4hn7nGNIC35EH8FpMQu8jnmGLX1aYMeX9tkBJOE5KrLLnyB7jIakYusW9wlfaGZlgyXhIWuEWHor7tWIcXYFta2rdKXitC9iSmMWGbSGGfsY5ghOBn0SjacUXONxHhyjBrFb6/BG174cWPiaTruENdlPxwaG2YhytOj84wcmPQWDVnp+Cdis7jlnACn/lBWxh+/ATWGh9SgzgYTB4OiDYJS0AjksQ2wRSn/mxM9pD7LT36F+wN2CRt9rT96vFzs5opI5fSo5u0tjSfBsGDfEe8Z2Dd0NilEuAxhaDJ8LPBHvwGfoE9o7aqRdYWlc+QQ9I/eNVtCPDDo5O7CL/a3GaXgWuPSpgsegYQxm7kOZmSt89NvEhk713OdlC90zclaS9yp0qfYj0zsZkJjbuX7R2xZ6y/JIHZ/AvceRZnI3u/fQR2UMPSZAmsMgDOJJb4KtVkj4e4GW7HMls90LOyST5AXLMNnswfUQCGRjFotM7jW6sczgc0Fb5k8DBQLYuXhGDPIPHtzkFAzdYupvoNaoSx+J7DN6AhQK/AZYCzzb0GSdaAAAAAElFTkSuQmCC\n",
+      "text/latex": [
+       "$\\displaystyle 496$"
+      ],
+      "text/plain": [
+       "496"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "f.subs([(x,11), (y,15)])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAADkAAAAQCAYAAACsu9d7AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACdklEQVRIDc2W21FCMRBALw4FqCVoBz46wA50rEDtQMcv+NUO1A6UDqQDHyVYAtIBnhOSTLigMowX3Jklm93N3XdCazweV71eb6eqqitQOACH4BX8dxn/HaL/F9HPTVbjuYE/kNfqdruJcSJDQHjDcgkeJUX5/xHwz6AMKAVZQZ/DuwNPoPsbKoBnYAYEVnUEPmVmgwT2OtGxZawY0Dnnj4vDj5G+djXIDviJkhkpwVJvwrfSTYO26/YXtelIWRAxAD5nWkYbNJi9ukBhhGWNp/ONrvit/1ulEXipqrZs1YaRZ7FUhN5zjzxfPtAGbHsIh6BtbqVPQeEFnf6EXM8v9u1MR/AC+l4vrOQMIDRAnU83btLJA46OF9MDaGDexGbNj68lyOizAZp8C/MKBpgbJBIvnHsO3k7UQkWtoEGUYFukRGxD1+WlbqM0vhpY6Dpo/XpjDbdry3eyBAShj1nzlaycvXNbtu4z7G14++X5n2h0/bbZroMJEoaTZer3nXPfjdSUYrnhzCd7x2trqpIIwryxTgXoYXg5QPeAzqYqBsZvP/O+6xn4Zn6HNXfOb99Kcs7M3B1RZrvqY8cnJEA0tMuaA4TW8MwTAi9VI88fPJ+bld7E0d4bAdia39oOQaJgNg5Z65Uxw0M/AD6DKbiQCPYfIUOTn2v2o2LfOBntabM/x/ZBdGDQRmilvGgG0GEeo9A5cQ5vQYMN7QltxpydHBA8ZS/gOqBemCr6q58+I6M2hAEaaHr/IDOkOfTB9c0JleSgh62sSbFdrHZuXfYrA+z6CnSiL8mu8eT/3TO3a9Ja5YqDS188i/i5sYjSCnRs/dz+f23vC/lX9wSqQz6tAAAAAElFTkSuQmCC\n",
+      "text/latex": [
+       "$\\displaystyle 2 x + 3$"
+      ],
+      "text/plain": [
+       "2⋅x + 3"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dfy=diff(f,y)\n",
+    "dfy"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAABMAAAAOCAYAAADNGCeJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABa0lEQVQ4EYWT7VHCQBCGLw4FEEvADhA6wA6kBKEDGX8lf7EDLUEpISUoHdgC2EF8npvcTQxx3Jmd3bz7vZsr2rYNdV3PQgg7WFrAJ3gHfhRI1Pltu+8p0rg9eCNWVFWVgLWAhHGPeITvkiPSYANTsoC+AXuB1+iHKx3gBzgTBrv8ht8zGIKBG2z3Peyt05+UJlvBZ5ys3Cdbn4LbueTIFpAjYcu6wAQ2aD40aOwoFsGuX5lAJVjq0lFD4QHGCMcv8Bmy+MPuRCZxj6/62NkFYZwDOl66cPbpbCZawo7+kYyjnRFgVw0yXy4F9CV2x/RI8ZoXyXCI8/+XKCXF74zuXkuvmQmD5w9jicA8kuMPKY25yjvD0ZZvkHk09PRb+CI+zQJWwr9+CXEpdobRikvkcOEWOHXBJjiMJFqAS80Eo9VdoguP+9ICXcOO9hy/xi9rMfe1tYhv0/bHdmGOI063KhK6v0R+w+g2kh/6D6zLmhIKrVd6AAAAAElFTkSuQmCC\n",
+      "text/latex": [
+       "$\\displaystyle 23$"
+      ],
+      "text/plain": [
+       "23"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dfy.subs([(x,10), (y,15)]) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Significa que la función $f$ incrementa aproximadamente 23 unidades si aplicamos un cambio en $y$ de 15 a 16 unidades, mientras que $x$ se mantiene en 10."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAB4AAAAOCAYAAAA45qw5AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACCklEQVQ4EX2V7VECQQyGD8YCGOwAO0CsQOhApQK1Axn+8c/RDtQK/OhAWpAOpAPFDvB51svOeh5mJiZ5k8sm2Sx2tttt1UaLxWIIfom83OG/aeCPxK4CQ++hz+EPeB/WfgZfIqs9/+ygZ/CcKGL4cID+CltUSoI0Vj6Ag27AfxVtHNyDX7oRVUocV6Xd0D1gSUw6tPbZzTri8F2gv4VdyHN0p/C3Yz5yxF81G5MJ3wmG/uMMooBPShvdzo27b+DZbOt4SqJdH1jtF34L+4+8ijFxr7DTCHIv7jR+3TFBjjg5dLaQXayIU05hF8fu8tKgV/i9ihdUJ7RBnyGNsxDxKncMMMC2m3xXBgSBl5WPsGfwLewCebCHZMI+xbitATsdwXlZ88GAbumuEdffJzFsiXvC8wCei0OPQuzURXRK7+Bj5E/HGG7hfyOuiIl7bZuIG+yhdmWs+SZIp7KGXT4nIKUn1QV0xL6ttoQpsvhjTBRQwFk1l+RovddM5Pdu7d4Cxy6XwUc4fJ8lOZpBjVu1iTw4kpexoRtnYhv5UyCYfgvo76E4//LHICUB34gjY0TiduJTadIhgIuZ8iDVLbptiha27DYzFHaqvLArEqUikRaQCN24M9hfpSCLTXcZgJJY794nte40/0kAumQuiaOWPMzgeBoVugd7oNSHr8HyUxHE9vs5/KldU37v3zB927UuutWUAAAAAElFTkSuQmCC\n",
+      "text/latex": [
+       "$\\displaystyle 468$"
+      ],
+      "text/plain": [
+       "468"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "f.subs([(x,10), (y,16)]) "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAABMAAAAOCAYAAADNGCeJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABa0lEQVQ4EYWT7VHCQBCGLw4FEEvADhA6wA6kBKEDGX8lf7EDLUEpISUoHdgC2EF8npvcTQxx3Jmd3bz7vZsr2rYNdV3PQgg7WFrAJ3gHfhRI1Pltu+8p0rg9eCNWVFWVgLWAhHGPeITvkiPSYANTsoC+AXuB1+iHKx3gBzgTBrv8ht8zGIKBG2z3Peyt05+UJlvBZ5ys3Cdbn4LbueTIFpAjYcu6wAQ2aD40aOwoFsGuX5lAJVjq0lFD4QHGCMcv8Bmy+MPuRCZxj6/62NkFYZwDOl66cPbpbCZawo7+kYyjnRFgVw0yXy4F9CV2x/RI8ZoXyXCI8/+XKCXF74zuXkuvmQmD5w9jicA8kuMPKY25yjvD0ZZvkHk09PRb+CI+zQJWwr9+CXEpdobRikvkcOEWOHXBJjiMJFqAS80Eo9VdoguP+9ICXcOO9hy/xi9rMfe1tYhv0/bHdmGOI063KhK6v0R+w+g2kh/6D6zLmhIKrVd6AAAAAElFTkSuQmCC\n",
+      "text/latex": [
+       "$\\displaystyle 23$"
+      ],
+      "text/plain": [
+       "23"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "468-445"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Ejercicio\n",
+    "La función de producción de cierta empresa está dada por\n",
+    "$$P=5L + 3L^2 + 4LK + 8K + 6K^2$$\n",
+    "en donde $L$ es el insumo mano de obra medido en miles de horas-hombre por semana, $K$ es el monto de capital invertido medido en miles de dólares por semana y P\n",
+    "es la producción semanal en miles de artículos. Determine las productividades marginales cuando $L=10$ y $K=15$ e interprete el resultado."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "L,K=symbols(\"L,K\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/latex": [
+       "$\\displaystyle 6 K^{2} + 4 K L + 8 K + 3 L^{2} + 5 L$"
+      ],
+      "text/plain": [
+       "   2                    2      \n",
+       "6⋅K  + 4⋅K⋅L + 8⋅K + 3⋅L  + 5⋅L"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "P=5*L + 3*L**2 + 4*L*K + 8*K + 6*K**2\n",
+    "P"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAHMAAAARCAYAAADuf5O3AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEGUlEQVRYCe2Y61EbMRCAHYYCPJRAOuBRQaADEiogdBCGX/AvQzoIVACkg5AKktBB6ABwB873idubu7PO9oFtnJnsjCxptbva1T4kX284HPb+t3/jDE5OTjaavgLXp62LX+21wOnp6QZLh/SHORLwn8Bv0/aK9Vv6O/Dvi3nqmF8zkGZA+0U7AiftwoF9zxqbXuZ0AZez7QHea9bOGzIWOf3B/n02jPNzLGz60+pM1nRCMElbA4R+EUE/pNOJSWCN6GlySeemBsZdZn3uKPZdZ5PvhQ43bghO+2xvnVeBtWltq7ItYmxA2Uw0z/Ib7TP6mih5Z7JoZE4E6BQqKHQEWP8I8oF+d2SxAwL+HcjX6Z+bFTrtBv7kyGJrA6w1uKAda1sho1M3AztukVGrfFUFRjKzMEJPJ29XiTNjD1kw6ktAhgd1TPvKuPXASobJA+XZOgP7W+J1zLsqM/hJAZa1rSrjGeNn2zHNXisZon0MnTYD9uWHvox4xh7cMb134ywcmVGxE8qgGqDLoBNXrzdiW0f+hZPXMhODLa9fO2ih48p7FX7L6iZ99tHUQe4sSZOO6GSvg+5p3pM+ZsogZN6Emm3NxdeaF2ccVUo7rH7JB6UzQfhIMIKnyiboogzFg8JA8LU4FT90cwd0DKPda4v5UWzK+JF2QBu578HVbAueJei15wr9UpWh12d/6HdpN9Uy62tz2vKqXXHn3MN3RvMFKL8Plfi7It0ywEbGtisUuwBfdXjoGrbV3gKx+Fo9uuq05Eh1YGzimEypmqbMBGl57FJeIe9F9JrN6SkPzsxUlvfUSMSDGwvIUYeQW6Vdc8J6rny3vvCgVzdZc9XiN3h13aI1y23SAd4mHtLJAN9M7Ziwo7btsOf6qj9M+vQ5g8fJ8U7xuV9mszJoHoDCzYbyPh0nKNagzzmrB95MN+MjaIJlml67ymjOMGh/E8bel+hhEGh79szAz9wOZFol1ujb/s/3VyHQmG2I/C9WBQ3yAMXrpOp9E9mTK0Nmp+tmZ+t/ItYWBR54zmGxf80h2Bm2+bGjDSx3ZRC3Ec0YbwXxg0ETomrdmplm0kg5Af8onj7nkLhTcnwRsXvwmvHjsqKp2DzmBlcu6Ixwy3DThlbbVA56H3o5eS7PE87Zu0yoykYGX7JhpYJsDn0Y2HKQHjgIbyuj3hmC2fmqgI4aaoDp1ASMtesD7eAJU/ttta2QoRwfT4sG/4LEuaa9mRtYQkq4N35tr0LBYEpbZgUPw0i0rFzQLFmx5iPnJzzlXcZYYz2QKG3yv+i7LDKTvOo+yOwEhV4RnJYmv2mmYKQXn7Mt9qjZDH2uWgVtaw/fi+yAXz0iO7XBsuvHmYGbjjhT5LLBSw9hWeyZtx0ry2LoBD2MvBR9E+iWfXmudvwF/xLstJ5mt/0AAAAASUVORK5CYII=\n",
+      "text/latex": [
+       "$\\displaystyle 4 K + 6 L + 5$"
+      ],
+      "text/plain": [
+       "4⋅K + 6⋅L + 5"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dPL=diff(P, L)\n",
+    "dPL"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAHwAAAAQCAYAAADUKBufAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEY0lEQVRYCdWZ61EbMRCATYYCCKkA6IBHBYEOyFBBQgfJ8I+/pINABQzuAFJBAh1ABzw6IN8nThrdWYflsY2JZsTurXZXu9rH6czS8/PzII7j4+NN8AvmFvhTpEcIbR38R/O8DXzwGfpNQ2sB6N8h7DD3mwX57qB/aZ4D4Nk95XHPv8xenay9ycAmz+IQeFjaEHrJN8/jgrXTksxb0Nh7hX2OmPfMT0yftekKOFhuGM7ANdYgGtSRAZ/0E2AKFvgJtGvgHjMozAWh/fQZaFYZ6K18PcPPwTXMA77L6ItETcJiImsUdtb69tY+GKNWkvJswFeYQwNuVYUggpu1ZnZpGNyv+QL8VuI3aB7Ox3wt4qxHfcNIy2Ej/wDcy+mT4sjvIrMOnLq60OE5jB3wverbWAUFhmn8QNZYXBfUGrffzOGHwmIfyQN9RKmVmA8r2+wpdgbWlHNcvoCXv+phmkRXwGIy5PwVuHZ1basQa7Ngi0G0CJzjRtG3cUJj1qfxYwPdqQOX9pkk4AbWttx3EBpaGgcSkUstvznUI6Ad4r208Gj7ATbVdokR36KSBUGLahf7L5l5PCysX9q07J+agYK+zAltjfW+953raQ0+246XwtZ7psaGefNgk608HEzlXi3fKmXmxob9sVt6AbYbe8G26k2A0EUnqfARQ1Giw7byeHNv8bAeW16obp7jgUZ6i3+RD9imH0/Aqo7T9W2Rtud7Y5eFGS6UQCvbi3gquKkCjiIva6dsEjfgsTXiReweHm+P8tkuvVyZhe9p+IVQ28q1O/rWupss2qHsXK1sC82ivIUeiqy6pXcdQYGtzxbyWmuOlWzlxKQw62zrfitOfFlr9o16UZHGqliPPTfQ+15JymjPJK3crYINyKa7icTagZz7zcOP/HXp57KFZWH6aba2XGtgzoegBzQAvhZsWcwukyJVDrgXPw/Jy8UmM7UbBcYN+It7QtcxO0dMrHGqwjr8tnK/GKpaeaZU33ptR59npO9FvdBn6kdjl8W01uABsM+QabXfMncnDjjCHuwGMBkM7qENgMk58Ji9pZanYa5b5b2Vx9pbDG3fwV6rIB8G1ASSbpKme0rm23ku0MGtrpTonbWZP7JX+JwDjnxFQdN+u+nqRAFHyEPwcJLzjeUmQde5+I4baXnIx8zfB7e6Roxs9M4daAublGx8lM56KSF7fdNgZLyclhLd5bkM9vS16TRJU+Flm5kQV9UBVxECZruHkL/vVqHZmrut1CQYQO9re+qw0q3ybgJBWvgIFdNjRa9v+KtPBrz4y2OPvlmRTU7f1Z+ZqYjAfb34aXa35D9PQAykDm430AwxUH9YC4EE+pOdFV4aXoq8LKjjjGlyRF5bSdIDPoDPQ/HQwqsAaIVN9Ts6OoM+YDfxUF0/kDcRPYdov7ZZrXawkm+Qw2j5jJ5SZ4i8vXBaP5DXbovoIdvEJAhdLAQ8W/hv0WkP6r04Pm8/PrwXR2dghy0stbEZ6FuUirn68Q89yNP/PqJaYwAAAABJRU5ErkJggg==\n",
+      "text/latex": [
+       "$\\displaystyle 12 K + 4 L + 8$"
+      ],
+      "text/plain": [
+       "12⋅K + 4⋅L + 8"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dPK=diff(P, K)\n",
+    "dPK"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAB0AAAAPCAYAAAAYjcSfAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABu0lEQVQ4Ea2U0VHDMAyGA9cBAiOkG7SwAWwAIwAbwGP7xpUNChsAG1Am4NoROgKwQfk+E/VMSHsE0J0iWVJ+2ZLsYrVaFf/No9Fo0MTEVsKV9l6R0Xg8HrB8gIfo75krqdgqlKvafoB8dY19UdtCPGMrWYRdXRr66dXOO3QBBBL4G9UJJ8jTcKJP0OfIY3gWdqRYsodYwo/wNTHpICZVSUDol+gGtpEJznIH8Z7yHJvV2ct8C+zrzWX2pO42DVvWR/jeAItSRagnLLG3ViiCctklqeBLwFOJcpBab26mJeTT9GWQNkbhINmmcqV24I+hSTCsLXtspI8+jZguJ01g+QcQE1rWmOhwm+we/42MHgNni4o/JeV/B+i2BhYvEWuned0GdCfY9kwN+HVSgASYIS8E+gGZuCK++lVSfrRfRVtCbE/wfMsmys5JATwBsJ8nRE8nqBP5wMQA5bn3XRC76JSUHxycQ2RzcNyIL5Bkj53WJjlE6dXqcmUqfnJw7GMaiBrVEwywOaWSV0Ne9xrdl05K127HVx+jYJYkSmPTvXcv+BIY0j550jby2UuPuU50NxjVcFNWwSczTfQHZ6zwPt8N0+EAAAAASUVORK5CYII=\n",
+      "text/latex": [
+       "$\\displaystyle 125$"
+      ],
+      "text/plain": [
+       "125"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dPL.subs([(L,10),(K,15)])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAB0AAAAOCAYAAADT0Rc6AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABvElEQVQ4EZWU7U3DMBCGHcQAFUxA2aDABGSEMgIwQsWv9m+7ATBC2KBdATZoNwC6QXieKI7SxlHDSZezz+/r+7CdrCzLsFgsxiGEGarcoj/oDP+Xjij/wI3gvKDf6CXqvIC/wYYwn8/HaGHwqMyXaInmLd8gnHh4r5EXLb4CnTo/I+4SfTSBKGRk1Xu0iD7sIBzcJ7CfLV4cGsPqq6A59hewLWiLrRjht/XKUNw12IeK0fOxUjffsbmVpSQmMxS3ZpOc/dZHhdipVwNk9jglELb4x9gstR59KRw+j2VaYzwqqzeJD31W2hEWJzhta7zRHYyOPhx+27uqSVboi2heQjIoADN9gxyJTJOSxMGLVVqhx2IRW/zei257Waj6jn0W0Cd9OPze3ps2n7FJmKD35uqg0poQ2gRAHTmBs50HxwLes7RqL2XeXCQWzOYO2xAYe64Bu9MqjHtxLPsn8/klLx9+q11XlTKx5wcBmSsGcKNKTuFYt317bJVsTWsbK91k/JoE+LY88LZcMJmwgW0J9UZDcF4WW3wPxyQqYexZ+7NZnTOwZAPrPJbmmrMwCMemG9Rf3ju26ZJ81wzwB7kAEA7uBvn9AAAAAElFTkSuQmCC\n",
+      "text/latex": [
+       "$\\displaystyle 228$"
+      ],
+      "text/plain": [
+       "228"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dPK.subs([(L,10),(K,15)])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAACcAAAAOCAYAAACsAAXLAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACPElEQVRIDZWWP24TQRSHNyQHiMINkpYqkN4Szg1AdHSQGxBR2W0o6XBJh0hJFxcukgrhG2BOEOwbmO8b7VvNjnfR+kkv7/9v3ryZWedgu91W0+n0tKqqa1h6Af+Fr/EvdfQR8XNiV8irPGcfPHJv6tpH5Bl8g2+l7xC2MR1vR6PRD3i2WCye4fuKfMBOidg7RPwe54ac7xGsGxuER+4v6r4hP4PxUOPdI+1j/YSgnb8LcCXJTnEDN4vqz4mcD7md6YPwqH9PzTHyNmrRXVP7iz6bG8NrAsc6MpqjW+xkW4TP4xRILmko3msKu67NT/xj+7E5m1hhdC1EqCqb1veG/JlKBw3FcxPe7ZKij/ERi7iDLnI6FfHW7rA9zjT2rqIheOR0bbiEO3FyO0SxjXmc8YJTDn59G2TvI0mJxZ8OvJM6JaaUV8Q007HmgdB9CDNAP4Wjln42+o6zSG2ZfXitpMJ4ujM5FvfI5sjy2+Xr6j3OArgxe/BiOk1epsRUH1vNAWQDVUdjHqcvd9/j7MOL4+y6e+FbHUXHLPwK/SxvDN2mJOUFdvndS3ez9vvimzuK3otHzE36qgMftaGY3Dw1R7KLuHgDXqe6gHcvwBoEFfxrhFeg9eKx/4tXg7jR+OmqXUk85+8SjM3BZDKx+zvYneTkDs5J8veuk4htCdjcZSSgD8Yj9zd1/oanXwmkR/oHfom+dHLuQMB0P5A5tb5xEaDQh+E/CNIY283dIX3d++A5pY/Uub50AafGNP4ByDIQD56Uc10AAAAASUVORK5CYII=\n",
+      "text/latex": [
+       "$\\displaystyle 2420$"
+      ],
+      "text/plain": [
+       "2420"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "P.subs([(L,10),(K,15)])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Ejercicio\n",
+    "\n",
+    "Se descubre que la utilidad por\n",
+    "acre de cierto cultivo de trigo es\n",
+    "$$P =40L + 5S + 20F - 3L^2 - S^ 2 - 2F^2 - 4SF$$\n",
+    "en donde L es el costo de la mano de obra, S es el costo de\n",
+    "la semilla y F es el costo del fertilizante. \n",
+    "\n",
+    "Calcule $P_L$, $P_S$, $P_F$, \n",
+    " y evalúelas cuando $L = 10$, $S = 3$ y $F = 4$.\n",
+    " \n",
+    "Interprete estas derivadas."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Relaciones de demanda\n",
+    "\n",
+    "\n",
+    "## Productos competitivos y complementarios\n",
+    "\n",
+    "Antes supusimos\n",
+    "que la demanda de un artículo sólo depende del precio por unidad del artículo\n",
+    "particular. En la práctica, esto no siempre es cierto porque la demanda de un\n",
+    "artículo puede verse afectada por el precio de algún otro artículo relacionado. \n",
+    "\n",
+    "### Ejemplo\n",
+    "\n",
+    "Suponga que hay dos marcas de celulares, marca A y marca B, las cuales son las líderes a nivel mundial en celulares de alta gama. \n",
+    "\n",
+    "¿Qué sucede con la demanda de la marca A, si ella aumenta el precio de sus celulares?\n",
+    "\n",
+    "*R:* La demanda debería disminuir. Lo mismo ocurriría para la marca B.\n",
+    "\n",
+    "Este hecho se puede entender matemáticamente como que la derivada de la demanda de A respecto al precio de A es negativa, lo mismo para el producto de la marca B:\n",
+    "\n",
+    "$$\\frac{\\partial X_A}{\\partial P_A}<0;\\ \\ \\ \\frac{\\partial X_B}{\\partial P_B}<0$$\n",
+    "\n",
+    "Esto es normal que suceda con cualquier producto.\n",
+    "\n",
+    "\n",
+    "¿Qué sucede con la demanda de la marca A si B aumenta su precio?\n",
+    "\n",
+    "*R:* La demanda de A debería aumentar cuando B aumente su precio. De manera análoga sucedería con la demanda de B si A aumenta su precio.\n",
+    "\n",
+    "$$\\frac{\\partial X_A}{\\partial P_B}>0;\\ \\ \\ \\frac{\\partial X_B}{\\partial P_A}>0$$\n",
+    "\n",
+    "Cuando esto sucede se dice que los productos son **COMPETITIVOS**.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Ejemplo\n",
+    "\n",
+    "Suponga que se tienen dos productos, A el cual es un celular y B el forro protector del mismo.\n",
+    "\n",
+    "¿Qué sucede con la demanda de los forros si el precio del celular aumenta?\n",
+    "\n",
+    "*R:* Al aumentar el precio de A (los celulares), la demanda de A  disminuye y  por lo tanto la demanda de B (los forros) disminuye, es decir\n",
+    "\n",
+    "$$\\frac{\\partial X_A}{\\partial P_B}<0;\\ \\ \\ \\frac{\\partial X_B}{\\partial P_A}<0$$\n",
+    "\n",
+    "Cuando esto sucede los productos se dicen **COMPLEMENTARIOS**\n",
+    "\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Ejemplo\n",
+    "Las demandas $x_A$ y $x_B$ de los productos $A$ y $B$ están dadas por las funciones\n",
+    "\n",
+    "$$x_A= 300 + 5p_B - 7p_A^2;\\ \\ \\ x_B = 250 - 9p_B + 2p_A$$\n",
+    "\n",
+    "en donde $p_A$ y $p_B$ son los precios unitarios de $A$ y $B$, respectivamente. \n",
+    "\n",
+    "Determine las cuatro funciones de demanda marginal e investigue si los productos $A$ y $B$ son competitivos o complementarios entre sí.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Ejercicio\n",
+    "\n",
+    "Las demandas $x_A$ y $x_B$ de los productos $A$ y $B$ están dadas por las funciones\n",
+    "\n",
+    "$$x_A= 150 - 0.3p^2_B - 2p^2_A;\\ \\ \\ x_B = 200 - 0.2p^2_A - 3p^2_B$$\n",
+    "\n",
+    "en donde $p_A$ y $p_B$ son los precios unitarios de $A$ y $B$, respectivamente. \n",
+    "\n",
+    "Determine las cuatro funciones de demanda marginal e investigue si los productos $A$ y $B$ son competitivos o complementarios entre sí."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Elasticidad\n",
+    "\n",
+    "La elasticidad de la demanda mide que tan sensible es un producto repecto al cambio en el precio.\n",
+    "\n",
+    "Si la demanda del producto $A$ depende de los precios $P_A$ y $P_B$ ésta se puede derivar respecto a cualquiera de las dos varibles, por lo que es posible calcular dos razones de cambio porcentuales:\n",
+    "\n",
+    "1. **Elasticidad de la demanda de A** la cual se define como:\n",
+    "$$\\eta_{p_A}=\\frac{\\ \\frac{\\partial x_A}{\\partial p_A}\\ }{\\frac{x_A}{p_A}}=\\ \\frac{\\partial x_A}{\\partial p_A}\\frac{p_A}{x_A}$$\n",
+    "\n",
+    "2. **Elasticidad de la demanda cruzada de A** la cual se puede ver como:\n",
+    "$$\\eta_{p_B}=\\frac{\\ \\frac{\\partial x_A}{\\partial p_B}\\ }{\\frac{x_A}{p_B}}=\\ \\frac{\\partial x_A}{\\partial p_B}\\frac{p_B}{x_A}$$\n",
+    "\n",
+    "Cuando:\n",
+    "* $|\\eta_{p_A}|>1$ el producto se dice elástico.\n",
+    "* $|\\eta_{p_A}|<1$ se conoce como inelástico.\n",
+    "*  $|\\eta_{p_A}|=1$ la demanda se dice unitaria.\n",
+    "\n",
+    "Por ejemplo, si $\\eta_{p_A}=-3$ se interpreta como que un aumento del $1\\%$ en el precio implica una caída del $3\\%$ en las ventas del producto.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Ejemplo\n",
+    "La función de demanda del producto A está dada por\n",
+    "$$x_A = 250 +0.3p_B - 5p^2_A$$\n",
+    "\n",
+    "Determine $\\eta_{p_A}$ y $\\eta_{p_B}$ cuando $p_A = 6$ y $p_B = 50$."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "pA,pB = symbols(\"pA,pB\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/latex": [
+       "$\\displaystyle - 5 pA^{2} + 0.3 pB + 250$"
+      ],
+      "text/plain": [
+       "      2               \n",
+       "- 5⋅pA  + 0.3⋅pB + 250"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "xA=250+0.3*pB-5*pA**2\n",
+    "xA"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAADwAAAATCAYAAADMBm6RAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACuElEQVRYCd2X7U0cMRCGD0QBKOmAdBCSCnJ0ENIBSQdB/Lt/iHSQUEE+OgipAEEHoQMQHVyex+xYvsW3ymmdFcorzflrPJ7xfKxva7lczv5XLBaLPWz7TrsfNu5Ep0WL4JceAO3Tv6/JZP6sm7+lfQGdMXdT420wpy7qlDHaYJTdRdo5dAe9grzVKuC9YuGU9ocM3d4r2gOoqdHIe8sRK8Z65rY/Y4Dge+gQ+oCcr+tksf6etV3aZKx89I0Cx58dN8YB8uJisxNGG7yBkofwXlf4L5mbY7yR0gTIMm2kiJose0qD5yhg2Pehl4Xro4GxevOWVmOtE8K5hNE5HIKG2r/03jNlwKvhhqP5Z5ronbiM1/SP4IlLYvgIx6y7T4SHk2wnpvJwHFhTNLyuYcICdkwr709oj/Enib4GWHmrgMeLcU8gDPZrkDCVwXHeUPschQ09c1rYv2YuFznGv6HwNt1HsHiW/HHBykrYgcGb/QXFDT+sDP8quFaA1u0KL9bWw/vm212hsCF92tuQPKXOUBiTWBh/pGM0lBU/ZGfbNNiN+SXSO6DJ0DMgZeWDC8Exd9PpMqMNL14UfHa9BGWpcwbjJIPW3F8Bcz4ls4e3V1b/7UDl88HFUeGF0jgVzxcgb2eUF/HNcQ++1szxGszjOGOyoqUiFhtfYn0YXeZq6TUNKy/APT5c5LGgZbBPXl9w6+CeFAEyTOZhFPvCeeaoT74E+iryDjp6mMmeNHRzNMDn+AR6Q18DEujL458DZa9Dqh8d72yrxb8lhOk9ldeDtoaRRe2StRxq9F1T8XgQ+F31bZ0LIH0vRHnxLaa7+iejkyNP5Lr7+5ehHL/HJc9FE4MR2gwYY5Wd0+ZvZzPhCJospDdQupa/G2wfZn1SBnehal6Wr6VhCzZcfTIGY6w55wNInDC2KjfHHyYA7LPG+w40AAAAAElFTkSuQmCC\n",
+      "text/latex": [
+       "$\\displaystyle - 10 pA$"
+      ],
+      "text/plain": [
+       "-10⋅pA"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dxApA=diff(xA,pA)\n",
+    "dxApA"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAABoAAAAOCAYAAAAxDQxDAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABnUlEQVQ4EZWU7VECQQyGD8YCTu0AO0DtADsQOxBKcPzHP4cStAShA+lAoQPtQIYO8HnWy7FzIGBmMnnzsUl2N7ut9XpdBI1Go3GFv5EX8BjbV/j3SeI6+IdVTIlUd/1MWysKYZijPyGnOpAGa7sB7y1WxZo0ChXgAWuf4T542gaEsdSgLoFXCHWDD5FJB6y5zQJfK/yoTIWQfXihoUHv6D0SuLt95FobkxNVjYZanFSoh3yprRsQC/XXu924fxFJvYfT3J7tLp1I+4huXX+WJzmEyWljDtYQnDbgjiJJdJ/nWVZKmRv/wiTt4rPINexxfsCJLHQMnR8TRCGTywXYwZgj66mLrvU3KXbru/oXUcA79ZQm4NI7iiPbdTxhO/SOuuTx2JoUR9eL8XZqOs0o9NhRet07/IXdYvdhe0zR2FZoFJrgudryFsUltgUJVjt8yVT59E93xEXOWSpEgCO4RNYvG2x3d/A9nEgbvIbdQU4PKG+5gRhzmcMRX+V/nUa/i7h4R9S/L00ROBH6J2CGrP81HeiOtT9MkFdRf6o/Ziidx09iMVkAAAAASUVORK5CYII=\n",
+      "text/latex": [
+       "$\\displaystyle 0.3$"
+      ],
+      "text/plain": [
+       "0.300000000000000"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dxApB=diff(xA,pB)\n",
+    "dxApB"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Elasticidad de la demanda de A** la cual se define como:\n",
+    "$$\\eta_{p_A}=\\frac{\\ \\frac{\\partial x_A}{\\partial p_A}\\ }{\\frac{x_A}{p_A}}=\\ \\frac{\\partial x_A}{\\partial p_A}\\frac{p_A}{x_A}$$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/latex": [
+       "$\\displaystyle - \\frac{10 pA^{2}}{- 5 pA^{2} + 0.3 pB + 250}$"
+      ],
+      "text/plain": [
+       "             2        \n",
+       "       -10⋅pA         \n",
+       "──────────────────────\n",
+       "      2               \n",
+       "- 5⋅pA  + 0.3⋅pB + 250"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "npA=(dxApA)/(xA/pA)\n",
+    "npA"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/latex": [
+       "$\\displaystyle -4.23529411764706$"
+      ],
+      "text/plain": [
+       "-4.23529411764706"
+      ]
+     },
+     "execution_count": 25,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "npA.subs([(pA, 6),(pB, 50)])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Podemos decir que un incremento aproximado del 1% en el precio de A\n",
+    "provocará una caída del 4.24% en la demanda de este producto."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Elasticidad de la demanda cruzada de A** la cual se puede ver como:\n",
+    "$$\\eta_{p_B}=\\frac{\\ \\frac{\\partial x_A}{\\partial p_B}\\ }{\\frac{x_A}{p_B}}=\\ \\frac{\\partial x_A}{\\partial p_B}\\frac{p_B}{x_A}$$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/latex": [
+       "$\\displaystyle \\frac{0.3 pB}{- 5 pA^{2} + 0.3 pB + 250}$"
+      ],
+      "text/plain": [
+       "        0.3⋅pB        \n",
+       "──────────────────────\n",
+       "      2               \n",
+       "- 5⋅pA  + 0.3⋅pB + 250"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "npB=(dxApB)/(xA/pB)\n",
+    "npB"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAKoAAAAPCAYAAAB0p1TfAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAHVUlEQVRoBdWa27EUNxBAh1sEANcRABnwyAAyABMBkAEu/vijcAaGCABnAESAIQNwBMBmcH2OdlorzWhmNRgou6u0klrd6oe6W5oL587OzoafBY8fP76MrJu0l4x3P0uucn6EbPa8SvtQ2sH8AvNT+k8l/v8w/i/bc750IIo+Heef6a/Qnm51uMbC94p2jfE0GF37w8Ya3Qx24C+WWOahU6BfgKuCIxbsWVPGA/oHJZ7xJtnwh9w1X7yFzsAMfRwL1/bd4XekewTG/X6hSfsK/Bv6DL10MkBr4v82Ml+n/+IcfOiTlka68Idy5fNsK9ngttjTJVsFkOOZB5wyuAduF4hWz3p1jjlQWXgPwxP6P2Wk16D39Ldoq9VhpH0OvY7SYRrRghsgdaL7SVuClTacPrCne7ymGXTJofQmgM0kWgLXq4MaCbfI7vWFNth0qjbpO33YOgQDI4IFsuRjA/UCLfk8IfcBdJQOngi2OyPfAM7kijMLn3mOBm/ek/F9cK/p79BK2V32wLNFtr60MP1OP9Drq7/pLWRrcVWdYwpUGFS8chg4q5tGmA23aIsgLYvJYYwfMlaZFiijVW1SYI/ygk9F34Ars16nLxo3yg7+ad8lmz22+OID9DlQpgJjPu7pgU3hHoi3tBQsvXTjJgal/BngNyDVX9/FzeT8PngDM4LyJTjP1QofOIZDlz3Q9cq2ePkMSkGqAMbK+IuhRSknj2sBrBtDFZyMM53dqkLvwN+E0QD5HmCFbEFVbZB3GyKDPVdYmcBb3ZtJA156E8bWgi7ZMP4IX3gDHA1oaHrptM8b6Ct2T8/GxDYpU/Iz9lwrv7C25CNIu6BXtufYKizqZALNYOkcI1AVbNmfQhjk+r8GlCizN+0Hzux8MtncTLeih/zJcnN6F/pnzRWQrPXK/hG+MElMeKvahUJHbbeyBfTSSW9AfmK/JR8lOax7K120DyGMDSChlL3H9P0elY2MsLMVV58VA03r5m2e4/liwzUVT9cWv3UN2Wa9X85V5RRH84qwv0vTMKvN7OMD3ACdV8Ump8Mzkw0unOu2S1D5Ap70VBiJ1dH3mBUjA3ODxUQxQKyC2itteR0PvXTwSbtUofWZ65UO4gTwJqIJ4tt/ltjgeuzpks1eiBkqf4kA/JgUqjXoF8/RihrErcyMbOg5wCR5448Os2VA2VLWdea+u36n+Z4xUKMaJB7mBpzVt3XF5H0bg5lsaLb6Ql39U5v6+Q5zTz9mZjcQOA833mrSXafNgqmXDt4ZwHsVpP6YJv7gGs1A0I/K9Z04hW57powLsk1O9ZmCegp5Df7VczzZ0x/9jQw4SthLMCp2mz5fSRNeHTvNeD8CnoMvg7lZGSZ7VdMO2RX9ZJJ9wT6+mXexzthk0Z5ZdWctEsxKKo2H9RF8FdS9dPC2wI+oZ+wRCZFpwHlDmVAmzAuaCRU6JTrm3fbkjQ+Dluz0sce+2UbG2h0+i0LoLqvnaKCWxDKUcDpO0puiXPgO48jsaisMCSNaFdIvZ4PUajRA6zU1CwrXjkBTNjzfwxfqfRndymqhngaBt4PvSj8I4/pMf6JiPoDvopN2CvDqB58Y2rYK0Fjp9HOWvcIws2dKuyQbvDIu0fwz2EOaN4l+8SNdSGcM/ug5noybyWQATCFwraCZ0m6dm81LgaE8jVyCCAS/br9Ft6bsLb6A1velibME4TvXPaDqOobXYLG6ShcVp5cOlgOwlwc90M+CFJw3U1y1B6bD1Z9kQ7PFnrwPfIuyR518llktreYmatjtsklr4B49x/NSA15FuQIkzP4nKurS9VyQ9g9RzsNR3ocFLoOvpU+Qx/oN9vLKKcFDMZDF64hpgByT3esLq3or0ZLPkJtso1eeB7GjrwCc+nlwp7101QZM4DPprtDnIGUcvlO/lEzg/PKf6VDs12VPQT+w36Js1tYKiLKs/gax46PnGIHqoZrNU/CP875t1gyc8vTMVU5oHbR4dWn93VN9NC4SJ3p5ErD2lYFOiKt1XMndMdm9vvAtWCXBKMEKlfWCRn1tJk/r8AzkOLSjdNkKBuxnUnrIUz1ug1e/JJtx2p++hPBD6NplT2xwTLZ00KjHc9oldRlxJpF6e5bSKD90EJUAfHWOJ2JB+tHyhd6NEzDWgb/S8r9+iKOd0dauvP0G67/uLSTl98PDL/sn5elz8jCe6XPgqEbSxf7VwjiJtV1rETldvoDXP0NV72PmflUL0yRxPnsPQu+16ZUbAdxLN8DjgZtUnknSZezFedWGfQZxlfSsec76oaTrtgf+XtnSTYuRPlNuunEYL4H62RKci/89BaPIR7TP+6XhBv2T6YbMP4I3Q/NVIz3z5DSGZqp76XyVecda9RXKXAMM9nuMvfqawJqBGsp6pc70CUZodYCyzVbBYDcINsuGp9cX2hHVTP08FN9hO/oKwKmX/i0PzuCtqskGOv0XtlaymHgLporlAmOrfJk86j37TynQddkD3RbZudggU7/ObAaXgb2b5/gP7i47HYF8zBkAAAAASUVORK5CYII=\n",
+      "text/latex": [
+       "$\\displaystyle 0.176470588235294$"
+      ],
+      "text/plain": [
+       "0.176470588235294"
+      ]
+     },
+     "execution_count": 27,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "npB.subs([(pA, 6),(pB, 50)])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Un incremento\n",
+    "del 1% en el precio de B da como resultado un aumento del 0.176% en la\n",
+    "demanda de A."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Ejercicio\n",
+    "\n",
+    "En el caso de las siguientes\n",
+    "funciones de demanda del producto A, determine $\\eta_{p_A}$ y $\\eta_{p_B}$\n",
+    "en los niveles de precio dados para los dos productos relacionados\n",
+    "A y B.\n",
+    "\n",
+    "1. $x_A = 250 + 0.3p_B + 2p^2_A; p_A = 5, p_B =40$\n",
+    "2. $x_A = \\cfrac{60p_B}{\\sqrt{p_A}}; p_A = 9, p_B =2$\n",
+    "\n",
+    "En cada caso interprete sus resultados."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.3"
+  },
+  "latex_envs": {
+   "LaTeX_envs_menu_present": true,
+   "autoclose": false,
+   "autocomplete": true,
+   "bibliofile": "biblio.bib",
+   "cite_by": "apalike",
+   "current_citInitial": 1,
+   "eqLabelWithNumbers": true,
+   "eqNumInitial": 1,
+   "hotkeys": {
+    "equation": "Ctrl-E",
+    "itemize": "Ctrl-I"
+   },
+   "labels_anchors": false,
+   "latex_user_defs": false,
+   "report_style_numbering": false,
+   "user_envs_cfg": false
+  },
+  "toc": {
+   "base_numbering": 1,
+   "nav_menu": {},
+   "number_sections": true,
+   "sideBar": true,
+   "skip_h1_title": false,
+   "title_cell": "Table of Contents",
+   "title_sidebar": "Contents",
+   "toc_cell": false,
+   "toc_position": {},
+   "toc_section_display": true,
+   "toc_window_display": false
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
